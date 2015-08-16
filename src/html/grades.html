@@ -1,0 +1,13 @@
+<div class="grades animate" ng-if="grades === 'Grades' && contentPage" ng-click="changePage('Grades')">
+	<div class="row">
+		<div class="col-xs-12 title">
+			<text>{{grades}}</text>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 line-graph-container" ng-controller="line-graph.controller">
+				<line-graph data="myGrades" config="config"></line-graph>
+			</div>
+		</div>
+	</div>
+</div>

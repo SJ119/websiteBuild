@@ -1,0 +1,24 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+UPDATE:
+
+02/22/14
+
+Uploaded my website project. The HTML, CSS, and jQuery files are located under the website folder.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+UPDATE:
+
+08/09/15
+
+	-Updated my website
+	-Based on Angular
+	-Used bootstrap to adapt website for mobile devices
+	-Added multiple pages within website (info, projects, etc)
+	-Used d3 for graphs
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+UPDATE:
+
+08/15/15
+
+	-Added tooltips using d3 tip

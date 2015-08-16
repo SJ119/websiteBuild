@@ -1,0 +1,16 @@
+<div class='row'>
+    <div class='col-xs-12 col-sm-6 name-column'>
+        <div class='name-container animate' ng-if="mainPage && !contentPage">
+            <span class='name title' id='{{name.name}}' ng-repeat='name in fullName' style="transition-delay: {{name.delay}};">
+                {{name.name}}
+            </span>
+        </div>
+    </div>
+    <div class='col-xs-12 col-sm-6 menu-column'>
+        <div class='menu-container animate' ng-if="mainPage && !contentPage">
+            <span class='menu' id='{{topic.name}}' ng-click="changePage(topic.name); color='#D46A6A'" ng-mousemove="color='#FFAAAA'" ng-mouseleave="color='#D46A6A'" ng-repeat='topic in content' style="transition-delay: {{topic.delay}};">
+                <a target='{{topic.target}}' href='{{topic.link}}' ng-style="{'color': color}">{{topic.name}}</a>
+            </span>
+        </div>
+    </div>
+</div>
