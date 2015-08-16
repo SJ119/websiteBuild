@@ -1,6 +1,5 @@
 angular.module('lineGraph')
 	.controller('line-graph.controller', ['$scope', function($scope) {
-
 		$scope.config = {
 			id: 'line-graph-' + parseInt(Math.random() * 1000, 10),
 			class: 'line-graph',
@@ -20,12 +19,12 @@ angular.module('lineGraph')
 					x: 20,
 					y: 10
 				},
-				format: function(term, courses, marks) {
-					var header = '<tr class="header"><th colspan="2">' + term + '</th></tr>';
+				format: function(avg, term, courses, marks, colors, color) {
+					var header = '<tr class="header"><th><span class="course-color" style="background-color: ' + color + '"></span>' + term + '</th><th class="avg">' + avg + '</th></tr>';
 					var body = '';
 
 					for (var i = 0; i < marks.length; i++) {
-						body += '<tr class="body"><td class="course">' + courses[i] + '</td><td class="grade">' + marks[i] + '</td></tr>';
+						body += '<tr class="body"><td class="course"><span class="course-color" style="background-color: ' + colors[i] + '"></span>' + courses[i] + '</td><td class="grade">' + marks[i] + '</td></tr>';
 					}
 
 					return '<table>' + header + body + '</table>';
@@ -35,6 +34,7 @@ angular.module('lineGraph')
 				min: 50,
 				max: 100,
 				color: '#767AB2',
+				colors:  ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd'],
 				outline: '#444667', 
 				colorOver: '#969BE3',
 				title: 'Average per term'

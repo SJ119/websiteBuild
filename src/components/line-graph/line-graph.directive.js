@@ -8,7 +8,6 @@ angular.module('lineGraph')
 				config: '='
 			},
 			link: function(scope, element) {
-
 				var toPx = function(n) {
 					return n + 'px';
 				};
@@ -78,7 +77,6 @@ angular.module('lineGraph')
 
 
 				var init = function() {
-
 					if (scope.tip) {
 						scope.tip.destroy();
 					}
@@ -190,8 +188,10 @@ angular.module('lineGraph')
 								},
 								'cx': 0,
 								'cy': 0,
-								'r': 5,
-								'fill': scope.config.data.color,
+								'r': 3,
+								'fill': function(d, i) {
+    								return scope.config.data.colors[i];
+								},
 								'stroke': scope.config.data.outline,
 								'fill-opacity': 0,
 								'stroke-opacity': 0,
@@ -257,7 +257,7 @@ angular.module('lineGraph')
 
 						var mousePointer = d3.mouse(this);
 
-						var tmp = scope.tip.show(scope.config.tooltip.format(term, courses, grades));
+						var tmp = scope.tip.show(scope.config.tooltip.format(data.termAvg, term, courses, grades, scope.config.data.colors, scope.config.data.color));
 
 						//debugger;
 						var tipSelection = d3.select('#' + scope.config.id + '-tooltip');
