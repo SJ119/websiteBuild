@@ -1,1 +1,1 @@
-angular.module('lineGraph', ['common']);
+angular.module('lineGraph', []);

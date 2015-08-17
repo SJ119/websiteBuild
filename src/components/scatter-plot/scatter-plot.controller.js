@@ -98,7 +98,10 @@ angular.module('scatterPlot')
 		};
 
 		$scope.changeNext = function(type) {
-			$scope.indices[type] += 1 % $scope.options.length;
+			$scope.indices[type] += 1;
+			if ($scope.indices[type] > $scope.options.length - 1) {
+				$scope.indices[type] = 0;
+			}
 			$scope.config.data[type] = $scope.options[$scope.indices[type]];
 		};
 
