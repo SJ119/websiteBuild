@@ -8,7 +8,7 @@ angular.module('scatterPlot')
 				width: 500,
 				height: 500,
 				maxWidth: 700,
-				maxHeight: 700,
+				maxHeight: 500,
 				margin: {
 					top: 40,
 					left: 50,
@@ -92,7 +92,7 @@ angular.module('scatterPlot')
 		$scope.changePrev = function(type) {
 			$scope.indices[type] -= 1;
 			if ($scope.indices[type] < 0) {
-				index = $scope.options.length - 1;
+				$scope.indices[type] = $scope.options.length - 1;
 			}
 			$scope.config.data[type] = $scope.options[$scope.indices[type]];
 		};
