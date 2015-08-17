@@ -1,4 +1,5 @@
 angular.module('app', 
-	['ngAnimate', 
+	['ngAnimate',
+	'common',
 	'lineGraph',
 	'scatterPlot']);

@@ -1,6 +1,5 @@
-/* jshint debug: true */
 angular.module('lineGraph')
-	.directive('lineGraph', ['$window', function($window) {
+	.directive('lineGraph', ['$window', 'line-service', function($window, LineService) {
 		return {
 			restrict: 'E',
 			scope: {
@@ -8,6 +7,9 @@ angular.module('lineGraph')
 				config: '='
 			},
 			link: function(scope, element) {
+
+				LineService = new LineService();
+
 				var toPx = function(n) {
 					return n + 'px';
 				};
@@ -54,14 +56,18 @@ angular.module('lineGraph')
 					});
 
 					//Create scales
-					scope.xScale = d3.scale.ordinal().domain(scope.terms).rangeRoundPoints([0, scope.config.dimensions.width], 1);
-					scope.yScale = d3.scale.linear().domain([scope.config.data.min, scope.config.data.max]).range([scope.config.dimensions.height, 0]);
+					scope.xScale = LineService.initOrdinalScale([0, scope.config.dimensions.width], 1);
+					LineService.setDomain(scope.xScale, scope.terms);
+					scope.yScale = LineService.initLinearScale([scope.config.dimensions.height, 0]);
+					LineService.setDomain(scope.yScale, [scope.config.data.min, scope.config.data.max]);
+
 				};
 
 				var initAxis = function() {
 					//Create x and y axis
-					scope.xAxis = d3.svg.axis().scale(scope.xScale);
-					scope.yAxis = d3.svg.axis().scale(scope.yScale).orient('left');
+					scope.xAxis = LineService.initAxis(scope.xScale);
+					scope.yAxis = LineService.initAxis(scope.yScale);
+					scope.yAxis.orient('left');
 				};
 
 				var createLine = function() {
@@ -86,19 +92,12 @@ angular.module('lineGraph')
 					scope.selection.selectAll('*').remove();
 
 					scope.selection
-						.append('h3')
-						.attr({
-							'class': 'graph-title'
-						})
-						.text(scope.config.data.title);
-
-					scope.selection
 						.append('div')
 						.attr('id', scope.config.id)
-						.attr('class', scope.config.class)
+						.attr('class', scope.config.class + ' graph')
 						.style({
-							'width': (scope.config.dimensions.width + scope.config.dimensions.margin.left + scope.config.dimensions.margin.right) + 'px',
-							'height': (scope.config.dimensions.height + scope.config.dimensions.margin.top + scope.config.dimensions.margin.bottom) + 'px'
+							'width': toPx(scope.config.dimensions.width + scope.config.dimensions.margin.left + scope.config.dimensions.margin.right),
+							'height': toPx(scope.config.dimensions.height + scope.config.dimensions.margin.top + scope.config.dimensions.margin.bottom)
 						})
 						.append('svg')
 						.attr({
@@ -112,7 +111,7 @@ angular.module('lineGraph')
 							'border': '3px solid #796560',
 							'margin-left': 'auto',
 							'margin-right': 'auto',
-							'max-width': scope.config.dimensions.maxWidth + 'px'
+							'max-width': toPx(scope.config.dimensions.maxWidth)
 						});
 
 					initScales();
@@ -135,7 +134,7 @@ angular.module('lineGraph')
 						.attr('class', scope.config.class + '-yAxis axis')
 						.call(scope.yAxis);
 
-					scope.third = scope.selection.select('#' + scope.config.id + ' .' + scope.config.class + '-svg')[0][0].getBoundingClientRect();
+					scope.tooltipBox = scope.selection.select('#' + scope.config.id + ' .' + scope.config.class + '-svg')[0][0].getBoundingClientRect();
 
 					createLine();
 
@@ -190,7 +189,7 @@ angular.module('lineGraph')
 								'cy': 0,
 								'r': 3,
 								'fill': function(d, i) {
-    								return scope.config.data.colors[i];
+									return scope.config.data.colors[i];
 								},
 								'stroke': scope.config.data.outline,
 								'fill-opacity': 0,
@@ -252,30 +251,27 @@ angular.module('lineGraph')
 							return d.course;
 						});
 
-						var x = scope.xScale(scope.term) + scope.config.tooltip.offset.x + scope.config.dimensions.margin.left + scope.third.left; // scope.svgPosition.left + scope.parentPosition.left;
+						var x = scope.xScale(scope.term) + scope.config.tooltip.offset.x + scope.config.dimensions.margin.left + scope.tooltipBox.left;
 						var y = d3.event.pageY + scope.config.tooltip.offset.y;
 
 						var mousePointer = d3.mouse(this);
 
-						var tmp = scope.tip.show(scope.config.tooltip.format(data.termAvg, term, courses, grades, scope.config.data.colors, scope.config.data.color));
+						var tmp = scope.tip.show(scope.config.tooltip.format(data.termAvg, term, courses, grades, scope.config.data.colors, scope.config.data.colorOver));
 
-						//debugger;
 						var tipSelection = d3.select('#' + scope.config.id + '-tooltip');
 						var tipWidth = parseInt(tipSelection.style('width'), 10);
 						var tipHeight = parseInt(tipSelection.style('height'), 10);
 
 						if (scope.xScale(scope.term) + scope.config.tooltip.offset.x + tipWidth > scope.config.dimensions.width) {
-							//console.log('hi');
 							x = x - (scope.config.tooltip.offset.x * 2 + tipWidth);
 						}
 
 						if (mousePointer[1] + scope.config.tooltip.offset.y + tipHeight > scope.config.dimensions.height + scope.config.dimensions.margin.top + scope.config.dimensions.margin.bottom) {
-							//console.log('hi');
 							y = y - (scope.config.tooltip.offset.y * 2 + tipHeight);
 						}
 
-						tmp.style('left', x + 'px');
-						tmp.style('top', y + 'px');
+						tmp.style('left', toPx(x));
+						tmp.style('top', toPx(y));
 						return tmp;
 					});
 
@@ -301,7 +297,7 @@ angular.module('lineGraph')
 					// Initialize tooltip
 					scope.tip = d3.tip().attr('class', 'd3-tip')
 						.html(function(d) {
-							return '<div class="line-graph-tooltip" id="' + scope.config.id + '-tooltip" style="' + scope.config.tooltip.width + 'px">' + d + '</div>';
+							return '<div class="line-graph-tooltip graph-tooltip" id="' + scope.config.id + '-tooltip">' + d + '</div>';
 						});
 
 					// Invoke tooltip on svg container
