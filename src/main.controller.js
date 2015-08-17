@@ -30,14 +30,14 @@ angular.module('app')
       target: '',
       delay: '75ms'
     }, {
-      name: 'Grades',
+      name: 'Graphs',
       link: '#',
       target: '',
       delay: '100ms'
     }];
 
     $scope.changePage = function(page) {
-      if (page === 'Grades') {
+      if (page === 'Graphs') {
 
         $timeout(function() {
           $scope.mainPage = false;
@@ -45,7 +45,7 @@ angular.module('app')
             $scope.contentPage = true;
           }, 500);
         }, 500);
-        $scope.grades = 'Grades';
+        $scope.graphs = 'Graphs';
         $scope.back = 'Back';
 
 
