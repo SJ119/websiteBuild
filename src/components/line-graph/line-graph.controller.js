@@ -14,6 +14,13 @@ angular.module('lineGraph')
 					bottom: 40
 				}
 			},
+			svg: {
+				backgroundColor: '#D8B4AB',
+				borderRadius: '5px',
+				border: '3px solid #796560',
+				marginLeft: 'auto',
+				marginRight: 'auto'
+			},
 			tooltip: {
 				offset: {
 					x: 20,

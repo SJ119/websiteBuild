@@ -15,8 +15,8 @@ body {
     -webkit-align-items: center;
     align-items: center;
 
-    .container {
-      margin-top: -5%;
+    > .container {
+      //margin-top: %;
 
       .row {
         text-align: center;
@@ -133,4 +133,65 @@ body {
 .graph-title {
   font-size: 30px;
   color: #E09443;
+}
+.graph-container {
+  margin-top: 20px;
+
+  .graph {
+    margin: auto;
+
+    .labels {
+      font-size: 10px;
+      text-anchor: middle;
+      pointer-events: none;
+    }
+    .axis path {
+      fill: none;
+      stroke: #777;
+      shape-rendering: crispEdges;
+    }
+    .axis text {
+      font-family: Lato;
+      font-size: 13px;
+      fill: rgb(121, 101, 96);
+    }
+    .axis {
+      .tick {
+        > line {
+          stroke: #777;
+        }
+      }
+    }
+    .x.guidelines {
+      stroke: #777;
+    }
+    .y.guidelines {
+      stroke: #777;
+    }
+  }
+}
+.button-row {
+  > div {
+    > div {
+      margin-bottom: 5px;
+      padding-bottom: 5px;
+      background-color: rgb(216, 180, 171);
+      border-radius: 5px;
+      border: 3px solid rgb(121, 101, 96);
+      max-width: 150px;
+
+      .button-label {
+        text-align: center;
+        text {
+        width: 30px;
+        }
+      }
+      button {
+        background-color: #E09443;
+        border: 1px solid rgb(121, 101, 96);
+        width: 20%;
+        min-width: 20px;
+      }
+    }
+  }
 }
