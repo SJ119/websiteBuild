@@ -8,7 +8,7 @@ angular.module('lineGraph')
 			},
 			link: function(scope, element) {
 
-				LineService = new LineService();
+				scope.lineService = new LineService();
 
 				var toPx = function(n) {
 					return n + 'px';
@@ -56,17 +56,17 @@ angular.module('lineGraph')
 					});
 
 					//Create scales
-					scope.xScale = LineService.initOrdinalScale([0, scope.config.dimensions.width], 1);
-					LineService.setDomain(scope.xScale, scope.terms);
-					scope.yScale = LineService.initLinearScale([scope.config.dimensions.height, 0]);
-					LineService.setDomain(scope.yScale, [scope.config.data.min, scope.config.data.max]);
+					scope.xScale = scope.lineService.initOrdinalScale([0, scope.config.dimensions.width], 1);
+					scope.lineService.setDomain(scope.xScale, scope.terms);
+					scope.yScale = scope.lineService.initLinearScale([scope.config.dimensions.height, 0]);
+					scope.lineService.setDomain(scope.yScale, [scope.config.data.min, scope.config.data.max]);
 
 				};
 
 				var initAxis = function() {
 					//Create x and y axis
-					scope.xAxis = LineService.initAxis(scope.xScale);
-					scope.yAxis = LineService.initAxis(scope.yScale);
+					scope.xAxis = scope.lineService.initAxis(scope.xScale);
+					scope.yAxis = scope.lineService.initAxis(scope.yScale);
 					scope.yAxis.orient('left');
 				};
 

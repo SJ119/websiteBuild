@@ -7,7 +7,9 @@ angular.module('scatterPlot')
 				config: '='
 			},
 			link: function(scope, element) {
-				LineService = new LineService();
+
+				scope.lineService = new LineService();
+
 
 				var toPx = function(n) {
 					return n + 'px';
@@ -41,23 +43,23 @@ angular.module('scatterPlot')
 
 				var initScales = function() {
 					scope.xData = getData(scope.config.data.x);
-					scope.xScale = LineService.initLinearScale([0, scope.config.dimensions.width]);
-					LineService.setDomain(scope.xScale, [d3.min(scope.xData), d3.max(scope.xData)], scope.config.data.offset);
+					scope.xScale = scope.lineService.initLinearScale([0, scope.config.dimensions.width]);
+					scope.lineService.setDomain(scope.xScale, [d3.min(scope.xData), d3.max(scope.xData)], scope.config.data.offset);
 
 					scope.yData = getData(scope.config.data.y);
-					scope.yScale = LineService.initLinearScale([scope.config.dimensions.height, 0]);
-					LineService.setDomain(scope.yScale, [d3.min(scope.yData), d3.max(scope.yData)], scope.config.data.offset);
+					scope.yScale = scope.lineService.initLinearScale([scope.config.dimensions.height, 0]);
+					scope.lineService.setDomain(scope.yScale, [d3.min(scope.yData), d3.max(scope.yData)], scope.config.data.offset);
 
 					scope.zData = getData(scope.config.data.z);
-					scope.zScale = LineService.initLinearScale([scope.config.data.r.min, scope.config.data.r.max]);
-					LineService.setDomain(scope.zScale, [d3.min(scope.zData), d3.max(scope.zData)]);
+					scope.zScale = scope.lineService.initLinearScale([scope.config.data.r.min, scope.config.data.r.max]);
+					scope.lineService.setDomain(scope.zScale, [d3.min(scope.zData), d3.max(scope.zData)]);
 				};
 
 				var initAxis = function() {
-					scope.xAxis = LineService.initAxis(scope.xScale);
+					scope.xAxis = scope.lineService.initAxis(scope.xScale);
 					scope.xAxis.tickValues(generateValues(scope.xScale, scope.config.data.ticks.x));
 
-					scope.yAxis = LineService.initAxis(scope.yScale);
+					scope.yAxis = scope.lineService.initAxis(scope.yScale);
 					scope.yAxis.tickValues(generateValues(scope.yScale, scope.config.data.ticks.y));
 					scope.yAxis.orient('left');
 				};

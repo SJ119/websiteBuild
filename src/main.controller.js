@@ -64,7 +64,7 @@ angular.module('app')
 
         $scope.back = '';
         $scope.projects = '';
-        $scope.grades = '';
+        $scope.graphs = '';
         $timeout(function() {
           $scope.contentPage = false;
           $timeout(function() {
@@ -81,7 +81,7 @@ angular.module('app')
       $scope.contentPage = false;
       $scope.back = '';
       $scope.projects = '';
-      $scope.grades = '';
+      $scope.graphs = '';
     });
 
     $scope.myProjects = {
@@ -107,39 +107,6 @@ angular.module('app')
           link: 'https://github.com/SJ119/MinionMash'
         }
       }
-      // ,
-      // web: {
-      //   personalBudget: {
-      //     name: 'Budget',
-      //     link: '',
-      //     target: '_blank'
-      //   },
-      //   calculator: {
-      //     name: 'Calculator (tip/tax/grade calculator)',
-      //     link: '',
-      //     target: '_blank'
-      //   },
-      //   average: {
-      //     name: 'AverageCalculator (grade calculator)',
-      //     link: '',
-      //     target: '_blank'
-      //   },
-      //   todo: {
-      //     name: 'Todo List (maybe put calendar)',
-      //     link: '',
-      //     target: '_blank'
-      //   },
-      //   nutrition: {
-      //     name: 'Nutrition stats (graphs and charts of nutrition values',
-      //     link: '',
-      //     target: 'traget="_blank"'
-      //   }
-      // },
-      // apps: {
-      //   watchApp: {
-      //     name: 'iPhone battery complication'
-      //   }
-      // }
     };
 
   }]);
