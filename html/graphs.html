@@ -1,0 +1,71 @@
+<div class="graphs animate" ng-if="graphs === 'Graphs' && contentPage" ng-click="changePage('Graphs')" ng-controller="scatter-plot.controller">
+	<div class="row">
+		<div class="col-xs-12 title">
+			<text>{{graphs}}</text>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<h3 class="line-graph-title graph-title">
+			Average Per Term
+			</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12" ng-controller="line-graph.controller">
+			<line-graph class="graph-container" data="myGrades" config="config"></line-graph>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<h3 class="scatter-plot-title graph-title">
+			2014-2015 NBA League Leaders
+			</h3>
+		</div>
+	</div>
+	<div class="row button-row">
+		<div class="col-xs-3"> </div>
+		<div class="col-xs-2">
+			<div>
+				<text>X-axis: </text>
+				<div class="button-label">
+					<text>{{config.data.x}}</text>
+				</div>
+				<div>
+					<button type="button" class="btn btn-xs btn-default" ng-click="changePrev('x')">&lt</button>
+					<button type="button" class="btn btn-xs btn-default"  ng-click="changeNext('x')">&gt</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-2">
+			<div>
+				<text>Y-axis: </text>
+				<div class="button-label">
+					<text>{{config.data.y}}</text>
+				</div>
+				<div>
+					<button type="button" class="btn btn-xs btn-default"  ng-click="changePrev('y')">&lt</button>
+					<button type="button" class="btn btn-xs btn-default"  ng-click="changeNext('y')">&gt</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-2">
+			<div>
+				<text>Z-axis: </text>
+				<div class="button-label">
+					<text>{{config.data.z}}</text>
+				</div>
+				<div>
+					<button type="button" class="btn btn-xs btn-default"  ng-click="changePrev('z')">&lt</button>
+					<button type="button" class="btn btn-xs btn-default"  ng-click="changeNext('z')">&gt</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-3"> </div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<scatter-plot class="graph-container" config="config" data="data"></scatter-plot>
+		</div>
+	</div>
+</div>

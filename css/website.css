@@ -1,0 +1,289 @@
+.graph-tooltip table {
+  font-size: 12px;
+  border-spacing: 0;
+  min-width: 100px;
+  color: #f8dfdf;
+  background-color: #a2a2aa;
+  opacity: 0.8;
+  box-shadow: 2px 2px 5px #888888;
+}
+.graph-tooltip table tr.header {
+  border: 2px solid #636368;
+}
+.graph-tooltip table tr.header th {
+  height: 25px;
+  padding-left: 5px;
+  vertical-align: middle;
+  text-align: left;
+}
+.graph-tooltip table tr.header th span.course-color {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border: 1px solid #444667;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.graph-tooltip table tr.header th.avg {
+  padding-right: 5px;
+}
+.graph-tooltip table tr.body {
+  border-bottom: 1px solid #a2a2aa;
+}
+.graph-tooltip table tr.body td {
+  background-color: #f8dfdf;
+  height: 20px;
+  vertical-align: middle;
+  color: #AA3939;
+}
+.graph-tooltip table tr.body td.grade {
+  text-align: right;
+  padding-right: 5px;
+  border-left: 1px dotted #a2a2aa;
+  min-width: 25px;
+}
+.graph-tooltip table tr.body td.course {
+  text-align: left;
+  padding-left: 5px;
+  vertical-align: center;
+  min-width: 75px;
+}
+.graph-tooltip table tr.body td.course span.course-color {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border: 1px solid #444667;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.line-graph-tooltip table {
+  font-size: 12px;
+  border-spacing: 0;
+  min-width: 100px;
+  color: #f8dfdf;
+  background-color: #a2a2aa;
+  opacity: 0.8;
+  box-shadow: 2px 2px 5px #888888;
+}
+.line-graph-tooltip table tr.header {
+  border: 2px solid #636368;
+}
+.line-graph-tooltip table tr.header th {
+  height: 25px;
+  padding-left: 5px;
+  vertical-align: middle;
+  text-align: left;
+}
+.line-graph-tooltip table tr.header th span.course-color {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border: 1px solid #444667;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.line-graph-tooltip table tr.header th.avg {
+  padding-right: 5px;
+}
+.line-graph-tooltip table tr.body {
+  border-bottom: 1px solid #a2a2aa;
+}
+.line-graph-tooltip table tr.body td {
+  background-color: #f8dfdf;
+  height: 20px;
+  vertical-align: middle;
+  color: #AA3939;
+}
+.line-graph-tooltip table tr.body td.grade {
+  text-align: right;
+  padding-right: 5px;
+  border-left: 1px dotted #a2a2aa;
+  min-width: 25px;
+}
+.line-graph-tooltip table tr.body td.course {
+  text-align: left;
+  padding-left: 5px;
+  vertical-align: center;
+  min-width: 75px;
+}
+.line-graph-tooltip table tr.body td.course span.course-color {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border: 1px solid #444667;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+body {
+  background-color: #AA3939;
+}
+body .vertical-center {
+  min-height: 100%;
+  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh;
+  /* These two lines are counted as one :-)       */
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* TWEENER - IE 10 */
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-flex-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+body .vertical-center > .container .row {
+  text-align: center;
+}
+body .vertical-center > .container .row .name-column .name-container {
+  cursor: default;
+}
+body .vertical-center > .container .row .name-column .name-container .name {
+  display: inline;
+}
+body .vertical-center > .container .row .menu-column .menu-container {
+  padding-top: 30px;
+}
+body .vertical-center > .container .row .menu-column .menu-container .menu {
+  display: inline;
+  font-size: 18px;
+}
+body .vertical-center > .container .row .menu-column .menu-container .menu a {
+  color: #D46A6A;
+  text-decoration: none;
+  -webkit-transition: .25s all;
+  -moz-transition: .25s all;
+  -ms-transition: .25s all;
+  -o-transition: .25s all;
+  transition: .25s all;
+  -webkit-transition-delay: .25s;
+  -moz-transition-delay: .25s;
+  -ms-transition-delay: .25s;
+  -o-transition-delay: .25s;
+  transition-delay: .25s;
+}
+body .vertical-center > .container .row .menu-column .menu-container .menu a:hover {
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -ms-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  -transition-delay: 0s;
+}
+body .vertical-center > .container .row .project-list {
+  display: inline-block;
+  margin: 20px;
+}
+body .vertical-center > .container .row .project-list a {
+  text-decoration: none;
+}
+body .vertical-center > .container .row .project-list a img {
+  border: 3px solid #550000;
+  border-radius: 10px;
+  width: 100px;
+  height: 100px;
+}
+body .vertical-center > .container .row .project-list a text {
+  margin-top: 10px;
+  text-align: center;
+  display: block;
+  color: #D46A6A;
+}
+body .vertical-center > .container .row .project-list a:hover img {
+  border-color: #FFAAAA;
+}
+body .vertical-center > .container .row .project-list a:hover text {
+  color: #FFAAAA;
+}
+body .vertical-center > .container .row .back {
+  text-align: center;
+  cursor: pointer;
+}
+body .vertical-center > .container .row .back text {
+  color: #801515;
+  font-size: 40px;
+}
+.animate.ng-enter {
+  -webkit-transition: .5s;
+  -moz-transition: .5s;
+  -ms-transition: .5s;
+  -o-transition: .5s;
+  transition: .5s;
+  opacity: 0;
+}
+.animate.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+.animate.ng-leave {
+  -webkit-transition: .5s;
+  -moz-transition: .5s;
+  -ms-transition: .5s;
+  -o-transition: .5s;
+  transition: .5s;
+  opacity: 1;
+}
+.animate.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+.title {
+  font-size: 50px;
+  color: #801515;
+}
+.graph-title {
+  font-size: 30px;
+  color: #E09443;
+}
+.graph-container {
+  margin-top: 20px;
+}
+.graph-container .graph {
+  margin: auto;
+}
+.graph-container .graph .labels {
+  font-size: 10px;
+  text-anchor: middle;
+  pointer-events: none;
+}
+.graph-container .graph .axis path {
+  fill: none;
+  stroke: #777;
+  shape-rendering: crispEdges;
+}
+.graph-container .graph .axis text {
+  font-family: Lato;
+  font-size: 13px;
+  fill: #796560;
+}
+.graph-container .graph .axis .tick > line {
+  stroke: #777;
+}
+.graph-container .graph .x.guidelines {
+  stroke: #777;
+}
+.graph-container .graph .y.guidelines {
+  stroke: #777;
+}
+.button-row > div > div {
+  min-width: 44px;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  background-color: #d8b4ab;
+  border-radius: 5px;
+  border: 3px solid #796560;
+  max-width: 150px;
+}
+.button-row > div > div .button-label {
+  text-align: center;
+}
+.button-row > div > div .button-label text {
+  width: 30px;
+}
+.button-row > div > div button {
+  background-color: #E09443;
+  border: 1px solid #796560;
+  width: 20%;
+  min-width: 20px;
+}
